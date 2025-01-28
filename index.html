@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sadaat O Momeneen - Islamic Matchmaking</title>
+    <style>
+        :root {
+            --primary-color: #006400;
+            --secondary-color: #e8e8e8;
+            --text-color: #333;
+            --bg-color: #f4f4f4;
+            --transition-speed: 0.3s;
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+            transition: background-color var(--transition-speed) ease;
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 20px;
+        }
+        header {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all var(--transition-speed) ease;
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        nav {
+            flex-grow: 1;
+        }
+        nav ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            padding: 0 0.5rem;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: color var(--transition-speed) ease, font-weight var(--transition-speed) ease;
+        }
+        nav a:hover {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        #showcase {
+            background: url('https://source.unsplash.com/1600x900/?islamic,architecture') no-repeat center center/cover;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            color: #fff;
+            transition: padding var(--transition-speed) ease;
+        }
+        #showcase h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #006400;
+            margin-top: 30px;
+            transition: font-size var(--transition-speed) ease;
+        }
+        #showcase p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #006400;
+            transition: font-size var(--transition-speed) ease;
+        }
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all var(--transition-speed) ease;
+        }
+        .btn:hover {
+            opacity: 0.8;
+            transform: translateY(-2px);
+        }
+        #message {
+            text-align: center;
+            color: #006400;
+            font-size: 40px;
+            transition: font-size var(--transition-speed) ease;
+        }
+        #audio {
+            background-color: #006400;
+            width: 80%;
+            max-width: 300px;
+            margin: 20px auto;
+            display: block;
+            transition: all var(--transition-speed) ease;
+        }
+        section {
+            padding: 3rem 0;
+            transition: padding var(--transition-speed) ease;
+        }
+        section h2 {
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--primary-color);
+            transition: font-size var(--transition-speed) ease;
+        }
+        .mission-box {
+            background: #fff;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all var(--transition-speed) ease;
+        }
+        .mission-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .mission-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        .mission-box ul {
+            list-style-type: none;
+        }
+        .mission-box li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+            transition: padding-left var(--transition-speed) ease;
+        }
+        .mission-box li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-size: 1.5em;
+            position: absolute;
+            left: 0;
+            top: -0.2rem;
+            transition: left var(--transition-speed) ease;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            transition: gap var(--transition-speed) ease;
+        }
+        .card {
+            background: #fff;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all var(--transition-speed) ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+        .card img {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+            transition: transform var(--transition-speed) ease;
+        }
+        .card:hover img {
+            transform: scale(1.1);
+        }
+        .contact-info {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: all var(--transition-speed) ease;
+        }
+        .contact-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            transition: padding var(--transition-speed) ease;
+        }
+        .showcase-image {
+            max-width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-speed) ease;
+        }
+        .showcase-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            nav {
+                margin-top: 1rem;
+            }
+            nav ul {
+                justify-content: space-around;
+            }
+            nav li {
+                padding: 0.5rem 0;
+            }
+            #showcase {
+                margin-top: 120px; /* Adjust based on your header height */
+            }
+            #showcase h1 {
+                font-size: 2.5rem;
+            }
+            #showcase p {
+                font-size: 1.1rem;
+            }
+            #message {
+                font-size: 30px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            .mission-box {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav ul {
+                flex-wrap: wrap;
+            }
+            nav li {
+                flex-basis: 33.33%;
+                text-align: center;
+            }
+            #showcase {
+                margin-top: 160px; /* Adjust based on your header height */
+            }
+            #showcase h1 {
+                font-size: 2rem;
+            }
+            #showcase p {
+                font-size: 1rem;
+            }
+            #message {
+                font-size: 24px;
+            }
+            section {
+                padding: 2rem 0;
+            }
+            .mission-box li {
+                padding-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Sadaat O Momeneen</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#mission">Mission</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#profiles">Profiles</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div id="showcase">
+            <h1>Sadaat O Momeneen</h1>
+            <p>Islamic Matchmaking for Blessed Unions</p>
+            <a href="#mission" class="btn">Learn More</a>
+            <img src="wedding.jpg" alt="Islamic Calligraphy" class="showcase-image" style="border: 4px solid #006400;">
+        </div>
+    </section>
+
+    <section id="mission">
+        <div class="container">
+            <h2>Our Mission</h2>
+            <div class="mission-box">
+                <p>This group has been created to assist the Sayyids and Momeneen as a matchmaking platform free of cost but strictly on the principle of "Sayyid with Sayyid and Momin with Momin".</p>
+                <h3>Important Information</h3>
+                <ul>
+                    <li>Real Sadaat o Momeneen are encouraged to join us. Admins are committed to the Sayyid with Sayyid & Momin with Momin matrimony policy very strictly and seriously.</li>
+                    <li>Admins are working to launch a web application on the "ideology of Sayyid with Sayyid & Momin with Momin".</li>
+                    <li>If you agree with the above ideology, you may post a proposal profile with full trust and confidence, whether you are a professional matchmaker or a client.</li>
+                    <li>Marriage Counsellors cannot claim fees from clients who have not hired their services.</li>
+                    <li>Rest assured that privacy, honesty, and truthfulness will never be compromised. There is zero tolerance on this issue.</li>
+                    <li>This service is free by the Admin. Never pay anything to anybody in this regard.</li>
+                    <li>It is recommended to submit profiles to the admin for further scrutiny and posting in the group. However, you can post your profile directly in the WhatsApp group with your own contact number if you prefer.</li>
+                    <li>Any questions or suggestions regarding group policy, activity, or posting of profiles will be highly appreciated, but they must be made privately.</li>
+                    <li>All postings/chats other than matrimonial proposals are prohibited.</li>
+                    <li>The Admin is not responsible for any wrong information given by a member.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Sadaat O Momeneen is a dedicated Islamic matchmaking platform designed to help the descendants of the Prophet (PBUH) and devout believers find their life partners. We understand the importance of preserving lineage and faith in marriage, and our service is tailored to meet these specific needs.</p>
+            <p>Our mission is to facilitate blessed unions based on Islamic values, mutual respect, and shared heritage. We provide a safe and halal environment for individuals to connect, communicate, and explore potential marriage prospects.</p>
+            <h3>Our Values</h3>
+            <ul>
+                <li>Adherence to Islamic Principles</li>
+                <li>Respect for Lineage and Tradition</li>
+                <li>Commitment to Privacy and Modesty</li>
+                <li>Promotion of Strong Family Values</li>
+                <li>Emphasis on Education and Character</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="https://img.icons8.com/ios-filled/100/006400/user-group-man-man.png" alt="Profile Creation Icon">
+                    <h3>Profile Creation and Matching</h3>
+                    <p>Create a detailed profile highlighting your background, education, interests, and what you're looking for in a spouse. Our advanced algorithm will suggest compatible matches based on your criteria.</p>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/ios-filled/100/006400/verified-account.png" alt="Verified Profiles Icon">
+                    <h3>Verified Profiles</h3>
+                    <p>We verify the Syed/Sayyid status and other important details to ensure the authenticity of profiles on our platform.</p>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/ios-filled/100/006400/communication.png" alt="Guided Communication Icon">
+                    <h3>Guided Communication</h3>
+                    <p>Our platform allows for respectful and guided communication between potential matches, always maintaining Islamic etiquette.</p>
+                </div>
+               
+                <div class="card">
+                    <img src="https://img.icons8.com/ios-filled/100/006400/family.png" alt="Family Involvement Icon">
+                    <h3>Family Involvement</h3>
+                    <p>We encourage family involvement in the matchmaking process, respecting traditional values and practices.</p>
+                </div>
+                <div class="card">
+                    <img src="https://img.icons8.com/ios-filled/100/006400/mosque.png" alt="Islamic Counseling Icon">
+                    <h3>Islamic Counseling</h3>
+                    <p>Access to Islamic scholars and counselors for guidance on marriage-related matters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="profiles">
+        <div class="container">
+            <h2>Featured Profiles</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Ahmad S. (28)</h3>
+                    <p><strong>Education:</strong> Masters in Islamic Studies</p>
+                    <p><strong>Occupation:</strong> Islamic Teacher</p>
+                    <p><strong>Looking for:</strong> A pious and educated life partner who values Islamic traditions.</p>
+                </div>
+                <div class="card">
+                    <h3>Fatima M. (25)</h3>
+                    <p><strong>Education:</strong> Bachelors in Computer Science</p>
+                    <p><strong>Occupation:</strong> Software Engineer</p>
+                    <p><strong>Looking for:</strong> A practicing Muslim with a balance of deen and dunya.</p>
+                </div>
+                <div class="card">
+                    <h3>Hassan R. (32)</h3>
+                    <p><strong>Education:</strong> PhD in Islamic Finance</p>
+                    <p><strong>Occupation:</strong> Financial Analyst</p>
+                    <p><strong>Looking for:</strong> A supportive and religious life companion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-info">
+                <p><strong>Name:</strong> <br>Inam Ul Abbas Bukhari</p>
+                <p><strong>Email:</strong> <a href="mailto:sadaatomomineen@gmail.com" style="color: #006400;"> <br>sadaatomomineen@gmail.com</a></p>
+                <p><strong>Contact:</strong> <a href="tel:+14379937092" style="color: #006400;"> <br>+1 (437) 993-7092</a></p>
+            </div>
+        </div>
+    </section>
+
+    <h4 id="message">Admin's Message</h4>
+    <audio id="audio" controls>
+        
+        <source src="voice (online-audio-converter.com).mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Sadaat O Momeneen Islamic Matchmaking. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
